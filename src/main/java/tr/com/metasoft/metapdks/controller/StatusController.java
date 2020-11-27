@@ -41,6 +41,7 @@ public class StatusController {
         else {
             return ResponseEntity.notFound().build();
         }
+
     }
 
     public void writeToDb(User existUser, Boolean status) {
