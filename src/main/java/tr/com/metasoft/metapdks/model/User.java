@@ -20,7 +20,7 @@ public class User {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "user_id")
     private String user_id;
-    @Column(name = "device_id")
+    @Column(name = "device_id", unique = true)
     private String device_id;
     @Column(name = "name")
     private String name;

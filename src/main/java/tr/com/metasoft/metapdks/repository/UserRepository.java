@@ -14,6 +14,6 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, String> {
 
     @Query(value = "FROM User u WHERE u.device_id = ?1")
-    User findUserByDeviceId(String unique_id);
+    User findUserByDeviceId(String device_id);
 
 }
