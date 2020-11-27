@@ -23,7 +23,7 @@ public class Status {
     @Column(name = "status_id")
     private String status_id;
     @Column(name = "status")
-    private String status;
+    private Boolean status;
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Europe/Istanbul")
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     @Column(name = "date_time")

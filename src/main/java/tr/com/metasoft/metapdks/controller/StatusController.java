@@ -24,14 +24,17 @@ public class StatusController {
     @Autowired
     StatusService statusService;
 
-    @PutMapping(value = "/add/{device_id}/{selectedStatus}")
-    public ResponseEntity<User> addStatus(@PathVariable(value = "device_id") String device_id,
-                                          @PathVariable(value = "selectedStatus") String selectedStatus) {
+    @PutMapping(value = "/add/{qrString}/{device_id}/{selectedStatus}")
+    public ResponseEntity<User> addStatus(@PathVariable(value = "qrString") String qrString,
+                                          @PathVariable(value = "device_id") String device_id,
+                                          @PathVariable(value = "selectedStatus") Boolean selectedStatus) {
 
         User existUser = userService.findUserByDeviceId(device_id);
 
         if (existUser != null){
             writeToDb(existUser, selectedStatus);
+
+            System.out.println(qrString);
 
             return ResponseEntity.ok().body(existUser);
         }
@@ -41,7 +44,7 @@ public class StatusController {
 
     }
 
-    public void writeToDb(User existUser, String status) {
+    public void writeToDb(User existUser, Boolean status) {
         Status tempStatus = new Status();
         tempStatus.setDate_time(new Timestamp(Calendar.getInstance().getTimeInMillis()));
         tempStatus.setStatus(status);
