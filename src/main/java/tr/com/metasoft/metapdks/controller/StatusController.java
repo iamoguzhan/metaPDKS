@@ -2,10 +2,7 @@ package tr.com.metasoft.metapdks.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tr.com.metasoft.metapdks.model.Status;
 import tr.com.metasoft.metapdks.model.User;
 import tr.com.metasoft.metapdks.service.StatusService;
@@ -24,7 +21,7 @@ public class StatusController {
     @Autowired
     StatusService statusService;
 
-    @PutMapping(value = "/add/{qrString}/{device_id}/{selectedStatus}")
+    @PostMapping(value = "/add/{qrString}/{device_id}/{selectedStatus}")
     public ResponseEntity<User> addStatus(@PathVariable(value = "qrString") String qrString,
                                           @PathVariable(value = "device_id") String device_id,
                                           @PathVariable(value = "selectedStatus") Boolean selectedStatus) {
